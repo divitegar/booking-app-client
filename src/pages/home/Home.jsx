@@ -16,7 +16,7 @@ export default function Home() {
         <Featured />
         <div className="homeTitle">Browse by property type</div>
         <PropertyList />
-        {/* <FeaturedProperties /> */}
+        <FeaturedProperties />
         <MailList />
         <Footer />
       </div>
