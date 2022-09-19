@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const ENV_DOMAIN = "https://booking-react-dv.herokuapp.com/api";
+
 const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,7 +12,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(url);
+        const res = await axios.get(`${ENV_DOMAIN}${url}`);
         setData(res.data);
       } catch (error) {
         setError(error);
@@ -23,7 +25,7 @@ const useFetch = (url) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(`${ENV_DOMAIN}${url}`);
       setData(res.data);
     } catch (error) {
       setError(error);
