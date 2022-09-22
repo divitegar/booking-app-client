@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
+const ENV_DOMAIN = "https://booking-react-dv.herokuapp.com/api";
+
 export default function Login() {
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -22,7 +24,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post(`${ENV_DOMAIN}/auth/login`, credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
     } catch (error) {
